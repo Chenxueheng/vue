@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h1>总价格：{{totalPrice}}</h1>
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      firstName: 'kobe',
+      listName: 'Bryant',
+      books: [
+        {id: 110,name: "test1",price: 111},
+        {id: 111,name: "test2",price: 112},
+        {id: 112,name: "test3",price: 113},
+        {id: 113,name: "test4",price: 114},
+      ]
+    },
+    computed: { //计算属性是有缓存的，速度会比methods快
+      totalPrice: function(){
+        let result = 0
+        for (let i of this.books){
+          result += i.price
+        }
+        return result
+      },
+      fullName: {
+        // 属性一般是没有set方法的
+        set: function(newValue) {
+          // console.log('--------',newValue);
+          const name = newValue.split(' ');
+          this.firstName = name[0];
+          this.listName = name[1];
+        },
+        get: function() {
+          return this.firstName + ' ' + this.listName
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

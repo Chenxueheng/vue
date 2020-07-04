@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--
+  for循环遍历的时候推荐加上key 会提高性能
+-->
+  <ul>
+    <li v-for="item in letters" :key="item">{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+      el: '#app',
+      data: {
+          letters : ['A','B','C','D','E']
+      }
+  })
+</script>
+
+<!--
+ for (let i=0; i < this.books.length; i++){
+          result += this.books[i].price
+        }
+        for (let i in this.books) {
+          result += this.books[i].price
+        }
+        for (let book of this.books) {
+          result += book.price
+        }
+-->
+</body>
+</html>

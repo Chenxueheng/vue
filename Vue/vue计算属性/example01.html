@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue 测试实例 - 菜鸟教程</title>
+<!--  <script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{message1}}</p>
+  <p>{{getFullName()}}</p>
+  <p>{{fullName}}</p>
+
+  <h2>总价格：{{totalPrice}}</h2>
+</div>
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js!',
+      message1: 'sadsa',
+      books: [
+        {id: 110, name: "test1", price: 111},
+        {id: 112, name: "test2", price: 101},
+        {id: 113, name: "test3", price: 151},
+        {id: 114, name: "test4", price: 181},
+      ]
+    },
+    computed: {
+      fullName: function () {
+        return this.message+' '+this.message1
+      },
+      totalPrice: function () {
+        let result = 0
+        for (let i=0; i < this.books.length; i++){
+          result += this.books[i].price
+        }
+        for (let i in this.books) {
+          result += this.books[i].price
+        }
+        for (let book of this.books) {
+          result += book.price
+        }
+        return result
+      }
+    },
+    methods: {
+      getFullName() {
+        return this.message+' '+this.message1
+      }
+    }
+  })
+</script>
+</body>
+</html>
